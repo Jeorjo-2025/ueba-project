@@ -4,7 +4,7 @@ import requests                 # call backend API
 from datetime import date       # date picker default
 
 # Backend base URL
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://ueba-backend.onrender.com"
 
 st.set_page_config(
     page_title="UEBA Dashboard",
