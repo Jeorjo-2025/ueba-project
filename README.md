@@ -23,7 +23,7 @@ Rule‑based systems miss subtle behavioral anomalies
 
 Security teams lack visibility into user‑level risk patterns
 
-   <span style="color:#AED581;">Objectives of the Project </span>            
+# <span style="color:#AED581;">Objectives of the Project </span>            
 
 This project addresses the gap by building a behavior‑driven risk scoring engine that highlights abnormal activity early.
 
