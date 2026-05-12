@@ -72,7 +72,7 @@ Explore core concepts:
 
 ---
 
-## **Mermaid Architecture Diagram**
+## **UEBA Project Architecture Diagram**
 
 ```mermaid
 flowchart TD
