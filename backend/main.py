@@ -66,7 +66,6 @@ def compute_daily_scores(date: str, db: Session = Depends(get_db)):
             level = "high"
         elif score >= 40:
             level = "medium"
-            level = "medium"
         else:
             level = "low"
 
