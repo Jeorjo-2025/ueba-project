@@ -167,7 +167,7 @@ ueba-project/
 
 ## **1. Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/ueba-project.git
+git clone https://github.com/Jeorjo-2025)/ueba-project.git
 cd ueba-project
 ```
 
