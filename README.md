@@ -4,13 +4,13 @@ You can copy **everything below** and paste it straight into your `README.md`.
 
 ---
 
-# <span style="color:#4FC3F7;">🚨 UEBA‑Driven Insider Threat Detection & Risk Scoring Platform</span>
+# <span style="color:#4FC3F7;"> UEBA‑Driven Insider Threat Detection & Risk Scoring Platform</span>
 
 A modular, explainable, end‑to‑end **User & Entity Behavior Analytics (UEBA)** system for detecting insider threats, anomalous behavior, and high‑risk user activity.
 
 ---
 
-## <span style="color:#81D4FA;">📘 Table of Contents</span>
+## <span style="color:#81D4FA;">  Table of Contents</span>
 
 - **Project Overview**  
 - **Architecture**  
@@ -25,7 +25,7 @@ A modular, explainable, end‑to‑end **User & Entity Behavior Analytics (UEBA)
 
 ---
 
-# <span style="color:#4DD0E1;">🌐 Project Overview</span>
+# <span style="color:#4DD0E1;"> Project Overview</span>
 
 This platform transforms raw user activity logs into **actionable insider‑risk intelligence** using:
 
@@ -50,7 +50,7 @@ Explore core concepts:
 
 ---
 
-# <span style="color:#BA68C8;">🏗️ System Architecture</span>
+# <span style="color:#BA68C8;">  System Architecture</span>
 
 ## **High‑Level Architecture Diagram (ASCII)**
 
@@ -124,7 +124,7 @@ ueba-project/
 
 ---
 
-# <span style="color:#AED581;">⚙️ Installation</span>
+# <span style="color:#AED581;"> Installation</span>
 
 ## **1. Clone the Repository**
 ```bash
@@ -150,7 +150,7 @@ pip install -r requirements.txt
 
 ---
 
-# <span style="color:#4DB6AC;">🚀 Running the Application</span>
+# <span style="color:#4DB6AC;"> Running the Application</span>
 
 ## **Start the Backend**
 ```bash
@@ -177,7 +177,7 @@ streamlit run app.py
 
 ---
 
-# <span style="color:#90CAF9;">✨ Features</span>
+# <span style="color:#90CAF9;"> Features</span>
 
 - Real‑time event ingestion  
 - Daily risk scoring  
@@ -189,7 +189,7 @@ streamlit run app.py
 
 ---
 
-# <span style="color:#F48FB1;">🛠️ Tech Stack</span>
+# <span style="color:#F48FB1;"> Tech Stack</span>
 
 - **FastAPI** — backend API  
 - **SQLAlchemy + SQLite** — data storage  
@@ -199,7 +199,7 @@ streamlit run app.py
 
 ---
 
-# <span style="color:#CE93D8;">📸 Screenshots (Optional)</span>
+# <span style="color:#CE93D8;"> Screenshots (Optional)</span>
 
 Add your screenshots here:
 
@@ -212,7 +212,7 @@ Add your screenshots here:
 
 ---
 
-# <span style="color:#FFAB91;">🔮 Future Enhancements</span>
+# <span style="color:#FFAB91;"> Future Enhancements</span>
 
 - Machine‑learning‑based anomaly detection  
 - Role‑based access control  
@@ -222,19 +222,8 @@ Add your screenshots here:
 
 ---
 
-# <span style="color:#B0BEC5;">📄 License</span>
+# <span style="color:#B0BEC5;"> License</span>
 
-MIT License or your preferred license.
-
+© 2026 Tamrat Workineh
 ---
 
-If you want, I can also generate:
-
-- A **dark‑mode optimized version**  
-- A **badge‑enhanced version**  
-- A **version with real architecture images**  
-
-Choose one:  
-**Dark Mode README**  
-**Badge Version**  
-**Image Architecture Version**
