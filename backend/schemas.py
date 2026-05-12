@@ -1,6 +1,7 @@
 from datetime import datetime
 from pydantic import BaseModel
-from typing import Optional, Any, List
+from typing import Optional, List
+
 
 class EventCreate(BaseModel):
     timestamp: datetime
@@ -11,7 +12,6 @@ class EventCreate(BaseModel):
     geo_country: Optional[str] = None
     resource: Optional[str] = None
     event_metadata: Optional[dict] = None
-
 
 
 class EventOut(EventCreate):
@@ -27,8 +27,14 @@ class DailyUserScoreOut(BaseModel):
     risk_score: float
     risk_level: str
 
+    class Config:
+        orm_mode = True
+
 
 class HighRiskUser(BaseModel):
     user_id: str
     risk_score: float
     risk_level: str
+
+    class Config:
+        orm_mode = True

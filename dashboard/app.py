@@ -1,10 +1,11 @@
-import streamlit as st          # UI framework
-import pandas as pd             # table handling
-import requests                 # call backend API
-from datetime import date       # date picker default
+import streamlit as st
+import pandas as pd
+import requests
+import random
+from datetime import date, datetime
 
 # Backend base URL
-API_URL = "https://ueba-backend.onrender.com"
+API_URL = "https://ueba-backend.onrender.com"   # update if needed
 
 st.set_page_config(
     page_title="UEBA Dashboard",
@@ -13,13 +14,17 @@ st.set_page_config(
 
 st.title("UEBA Insider Risk Dashboard")
 
-# Date selector
+# ============================
+# DATE SELECTOR
+# ============================
 selected_date = st.date_input("Select date", value=date.today())
 date_str = selected_date.isoformat()
 
 st.write(f"Showing data for: **{date_str}**")
 
-# Button to run scoring job
+# ============================
+# RUN SCORING JOB
+# ============================
 if st.button("Run scoring job for this date"):
     resp = requests.post(f"{API_URL}/jobs/score/{date_str}")
     if resp.status_code == 200:
@@ -29,12 +34,13 @@ if st.button("Run scoring job for this date"):
 
 st.markdown("---")
 
+# ============================
+# HIGH-RISK USERS
+# ============================
 st.subheader("High-risk users")
 
-# Slider for minimum score
 min_score = st.slider("Minimum risk score", min_value=0, max_value=100, value=70)
 
-# Fetch high-risk users
 params = {"date": date_str, "min_score": min_score}
 resp = requests.get(f"{API_URL}/alerts/high-risk", params=params)
 
@@ -42,16 +48,16 @@ if resp.status_code == 200:
     data = resp.json()
     if data:
         df = pd.DataFrame(data)
-        # Interactive table
         st.dataframe(df, use_container_width=True)
 
-        # Select a user to inspect
+        # User selection
         user_ids = df["user_id"].unique().tolist()
         selected_user = st.selectbox("Inspect user", user_ids)
 
         if selected_user:
             score_resp = requests.get(
-                f"{API_URL}/score/user/{selected_user}", params={"date": date_str}
+                f"{API_URL}/score/user/{selected_user}",
+                params={"date": date_str}
             )
             if score_resp.status_code == 200:
                 score_data = score_resp.json()
@@ -64,9 +70,10 @@ if resp.status_code == 200:
         st.info("No high-risk users for this date and threshold.")
 else:
     st.error("Could not fetch high-risk users. Is the API running?")
-import random
-from datetime import datetime, timedelta
 
+# ============================
+# GENERATE SAMPLE EVENTS
+# ============================
 st.subheader("Generate sample UEBA events")
 
 if st.button("Generate sample UEBA events"):
@@ -82,14 +89,17 @@ if st.button("Generate sample UEBA events"):
 
     generated = 0
 
-    for _ in range(50):  # generate 50 events
+    for _ in range(50):
         user = random.choice(users)
         event_type = random.choice(event_types)
         country = random.choice(countries)
         resource = random.choice(resources)
 
+        # FIXED: timestamp must be ISO8601 without trailing Z
+        timestamp = f"{date_str}T{random.randint(0,23):02d}:{random.randint(0,59):02d}:00"
+
         event = {
-            "timestamp": f"{date_str}T{random.randint(0,23):02d}:{random.randint(0,59):02d}:00Z",
+            "timestamp": timestamp,
             "user_id": user,
             "entity_id": f"laptop-{random.randint(1,50)}",
             "event_type": event_type,

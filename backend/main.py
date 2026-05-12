@@ -3,10 +3,11 @@ from sqlalchemy.orm import Session
 from datetime import datetime
 from typing import List
 
-from .database import Base, engine, get_db
-from . import models, schemas
+from database import Base, engine, get_db
+import models
+import schemas
 
-# create tables if they don't exist
+# Create tables if they don't exist
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="UEBA API", version="0.1.0")
@@ -26,15 +27,15 @@ def create_event(event: schemas.EventCreate, db: Session = Depends(get_db)):
     Ingest a single UEBA event.
     """
     db_event = models.Event(
-    timestamp=event.timestamp,
-    user_id=event.user_id,
-    entity_id=event.entity_id,
-    event_type=event.event_type,
-    source_ip=event.source_ip,
-    geo_country=event.geo_country,
-    resource=event.resource,
-    event_metadata=event.event_metadata,
-)
+        timestamp=event.timestamp,
+        user_id=event.user_id,
+        entity_id=event.entity_id,
+        event_type=event.event_type,
+        source_ip=event.source_ip,
+        geo_country=event.geo_country,
+        resource=event.resource,
+        event_metadata=event.event_metadata,
+    )
     db.add(db_event)
     db.commit()
     db.refresh(db_event)
@@ -44,12 +45,8 @@ def create_event(event: schemas.EventCreate, db: Session = Depends(get_db)):
 @app.post("/jobs/score/{date}")
 def compute_daily_scores(date: str, db: Session = Depends(get_db)):
     """
-    Very simple scoring job:
-    - For each user on a given date,
-      risk_score = min(100, number_of_events * 10)
-    - risk_level based on score.
+    Compute daily user risk scores.
     """
-    # get all events for that date
     start = datetime.fromisoformat(date + "T00:00:00")
     end = datetime.fromisoformat(date + "T23:59:59")
 
@@ -59,17 +56,16 @@ def compute_daily_scores(date: str, db: Session = Depends(get_db)):
         .all()
     )
 
-    # count events per user
     counts = {}
     for e in events:
         counts[e.user_id] = counts.get(e.user_id, 0) + 1
 
-    # create scores
     for user_id, count in counts.items():
         score = min(100, count * 10)
         if score >= 70:
             level = "high"
         elif score >= 40:
+            level = "medium"
             level = "medium"
         else:
             level = "low"
