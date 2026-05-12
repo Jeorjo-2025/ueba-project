@@ -3,7 +3,49 @@
 
 # <span style="color:#4FC3F7;"> UEBA‑Driven Insider Threat Detection & Risk Scoring Platform</span>
 
-A modular, explainable, end‑to‑end **User & Entity Behavior Analytics (UEBA)** system for detecting insider threats, anomalous behavior, and high‑risk user activity.
+## <span style="color:#81D4FA;">  Introduction </span>
+
+Modern organizations generate massive volumes of digital activity — logins, file access, email interactions, process executions, and network flows. Hidden within this telemetry are subtle behavioral deviations that may indicate insider threats, data exfiltration attempts, or compromised accounts.
+
+# <span style="color:#AED581;"> Problem Statement </span>
+
+Organizations face a growing challenge:
+
+How do we detect malicious or risky behavior from legitimate users before damage occurs?
+
+Traditional security tools focus on external attackers. However:
+
+30–40% of breaches involve insiders
+
+Insider actions often appear “normal”
+
+Rule‑based systems miss subtle behavioral anomalies
+
+Security teams lack visibility into user‑level risk patterns
+
+   <span style="color:#AED581;">Objectives of the Project </span>            
+
+This project addresses the gap by building a behavior‑driven risk scoring engine that highlights abnormal activity early.
+
+This project implements a complete User and Entity Behavior Analytics (UEBA) platform that:
+
+Ingests user activity events 
+
+Learns behavioral patterns
+
+Scores anomalies
+
+Surfaces high‑risk users through an interactive dashboard
+
+It is designed as a lightweight, modular, and fully explainable insider‑risk analytics system.
+
+Explore the core concepts:
+
+UEBA
+
+Insider Threat Detection
+
+Cyber Telemetry
 
 ---
 
